@@ -10,12 +10,12 @@ function main() {
         var pCells = pTable[0].rows.item(i).cells;
         var str = pCells.item(0).innerText;
         var d = str.split(", ");
-        var str2 = d[3];
+        var str2 = d[1];
         if (str2 === undefined) {
             continue
         }
         console.log("Str2: " + str2);
-        var yr = d[4];
+        var yr = d[2];
         var md = str2.split(" ");
         prices.push({price: pCells.item(4).innerText.replace(",",""), 
                      date: md[1] + '/' + md[0] + '/' + yr});
