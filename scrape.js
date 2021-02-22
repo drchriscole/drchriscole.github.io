@@ -11,13 +11,14 @@ function main() {
         var str = pCells.item(0).innerText;
         var d = str.split(", ");
         var str2 = d[1];
+        console.log("str2: " + str2);
         var yr = d[2];
         var md = str2.split(" ");
         prices.push({price: pCells.item(4).innerText.replace(",",""), 
                      date: md[1] + '/' + md[0].slice(0,3) + '/' + yr});
 
     }
-    data = tsvFormat(prices.reverse);
+    data = tsvFormat(prices.reverse());
     download("prices.tsv", data);
 }
 
