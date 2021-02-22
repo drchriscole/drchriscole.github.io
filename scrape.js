@@ -26,6 +26,13 @@ function main() {
     }
     // reverse order of price data to have newest date last
     data = tsvFormat(prices.reverse());
+    
+    var symbStr = document.getElementsByClassName("mod-tearsheet-overview__header__symbol");
+    var symStrSplt = symbStr[0].split(":");
+    var sym = symStrSplt[0];
+    var units = symStrSplt[1];
+    console.log(`Got ${sym} with ${units} units`);
+
     download("prices.tsv", data);
 }
 
