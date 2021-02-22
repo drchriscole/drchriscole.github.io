@@ -1,6 +1,9 @@
 
 function main() {
     var pTable = document.getElementsByClassName("mod-ui-table mod-tearsheet-historical-prices__results mod-ui-table--freeze-pane");
+    if (pTable[0] === undefined) {
+        alert("No prices table found. Ensure the 'Historical prices' tab is selected.");
+    }
     var rowLength = pTable[0].rows.length;
     console.log("Found table with " + rowLength + " rows");
     var prices = [];
