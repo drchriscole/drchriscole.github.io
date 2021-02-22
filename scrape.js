@@ -3,7 +3,6 @@ function main() {
     var pTable = document.getElementsByClassName("mod-ui-table mod-tearsheet-historical-prices__results mod-ui-table--freeze-pane");
     var rowLength = pTable[0].rows.length;
     console.log("Found table with " + rowLength + " rows");
-    var price = pTable[0].rows.item(1).cells.item(4).innerText;
     var prices = [];
     // start at 1 to avoid header row
     for (i = 1; i < rowLength; i++){
@@ -24,17 +23,26 @@ function main() {
                      date: date.padStart(2, "0") + '/' + month.padStart(2, "0") + '/' + year});
 
     }
-    // reverse order of price data to have newest date last
-    data = tsvFormat(prices.reverse());
-    
+
+    // grab fund name
     var symbStr = document.getElementsByClassName("mod-tearsheet-overview__header__symbol");
-    console.log("symbStr: " + symbStr);
-    var symStrSplt = symbStr[0].split(":");
+    console.log("symbStr: " + symbStr[0].innerText);
+    var symStrSplt = symbStr[0].innerText.split(":");
     var sym = symStrSplt[0];
     var units = symStrSplt[1];
     console.log(`Got ${sym} with ${units} units`);
-
-    download("prices.tsv", data);
+    // define file name
+    var filename;
+    if (sym === undefined) {
+        filename = 'prices.tsv'
+    } else {
+        filename = sym + '.tsv'
+    }
+    
+    // reverse order of price data to have newest date last
+    data = tsvFormat(prices.reverse());
+    // create download
+    download(filename, data);
 }
 
 /*
