@@ -11,6 +11,9 @@ function main() {
         var str = pCells.item(0).innerText;
         var d = str.split(", ");
         var str2 = d[3];
+        if (str2 === undefined) {
+            continue
+        }
         console.log("Str2: " + str2);
         var yr = d[4];
         var md = str2.split(" ");
