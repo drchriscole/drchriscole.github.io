@@ -11,6 +11,7 @@ function main() {
         var str = pCells.item(0).innerText;
         var d = str.split(", ");
         var str2 = d[3];
+        console.log("Str2: " + str2);
         var yr = d[4];
         var md = str2.split(" ");
         prices.push({price: pCells.item(4).innerText.replace(",",""), 
